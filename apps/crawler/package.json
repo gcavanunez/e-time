@@ -1,0 +1,40 @@
+{
+	"name": "@acme/crawler",
+	"private": true,
+	"version": "0.1.0",
+	"scripts": {
+		"dev": "pnpm with-env tsx watch ./src/index.ts",
+		"build:up": "tsup",
+		"build:un": "unbuild",
+		"build:es": "esbuild ./src/index.ts --bundle --platform=node --format=esm --outdir=out",
+		"build": "ncc build ./src/index.ts -o dist",
+		"clean": "rm -rf .turbo node_modules",
+		"lint": "eslint .",
+		"format": "prettier --check \"**/*.{mjs,ts,md,json}\"",
+		"typecheck": "tsc --noEmit",
+		"with-env": "dotenv -e ../../.env --",
+		"dotenv-cli": "^7.3.0"
+	},
+	"dependencies": {
+		"@acme/db": "^0.1.0",
+		"@vercel/ncc": "^0.38.0",
+		"rss-parser": "^3.13.0",
+		"tsup": "^7.2.0",
+		"tsx": "^3.12.10",
+		"unbuild": "^2.0.0"
+	},
+	"devDependencies": {
+		"@acme/eslint-config": "0.2.0",
+		"@acme/prettier-config": "^0.1.0",
+		"@acme/tsconfig": "^0.1.0",
+		"esbuild": "^0.19.3",
+		"eslint": "^8.49.0",
+		"typescript": "^5.2.2"
+	},
+	"eslintConfig": {
+		"extends": [
+			"@acme/eslint-config/base"
+		]
+	},
+	"prettier": "@acme/prettier-config"
+}
